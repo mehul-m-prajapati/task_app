@@ -1,8 +1,9 @@
+import TaskApp from "@/components/TaskApp";
 
 export default function Home() {
   return (
-    <div>
-        Task App
+    <div className="min-h-screen">
+        <TaskApp />
     </div>
   );
 }
