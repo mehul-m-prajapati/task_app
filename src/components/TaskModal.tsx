@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle,
 import { useState } from 'react';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
+import { Calendar } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -88,6 +89,10 @@ function TaskModal({isOpen, onClose, onAddTask}: TaskModalProps) {
                     <Input
                         id="dueDate"
                         type="date"
+                        className='w-[180px]'
+                        style={{
+                            colorScheme: 'dark',
+                        }}
                         value={dueDate}
                         onChange={(e) => setDueDate(e.target.value)}
                     />

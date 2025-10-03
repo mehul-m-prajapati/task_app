@@ -6,6 +6,14 @@ import { PencilLine as Edit, Trash2, Save, CircleX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from "react";
 import { Input } from "./ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 interface TaskProps {
   title: string;
@@ -117,17 +125,43 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
 
                     {/* Label */}
                     <div className="col-span-2">
-                        <span className={cn(
-                            "px-3 py-1 rounded-full text-sm font-medium",
-                            getLabelColor(task.label)
-                        )}>
-                            {task.label}
-                        </span>
+                        {editTaskId == task.id ? (
+                            <select
+                                value={editForm.label}
+                                onChange={(e) => setEditForm({...editForm, label: e.target.value as any})}
+                                className={cn(
+                                  "rounded px-2 py-1",
+                                  getLabelColor(editForm.label)
+                                )}
+                            >
+                                <option value="work">work</option>
+                                <option value="personal">personal</option>
+                                <option value="priority">priority</option>
+                            </select>
+                        ) : (
+                            <span className={cn(
+                                "px-3 py-1 rounded-full text-sm font-medium",
+                                getLabelColor(task.label)
+                            )}>
+                                {task.label}
+                            </span>
+                          )
+                        }
                     </div>
 
                     {/* Due Date */}
                     <div className="col-span-3">
-                        <span className="text-lg text-gray-700">{task.dueDate}</span>
+                        {editTaskId === task.id ? (
+                            <Input
+                                type="date"
+                                value={editForm.dueDate}
+                                onChange={(e) => setEditForm({...editForm, dueDate: e.target.value})}
+                                className="border rounded px-2 py-1 w-full text-lg text-gray-700"
+                            />
+                        ) : (
+                            <span className="text-lg text-gray-700">{task.dueDate}</span>
+                          )
+                        }
                     </div>
 
                     {/* Actions */}
