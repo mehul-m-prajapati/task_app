@@ -17,10 +17,11 @@ import { Button } from './ui/button';
 interface TaskModalProps {
     isOpen: boolean;
     onClose: () => void;
+    onAddTask: (title: string, label: 'work' | 'personal' | 'priority', dueDate: string) => void;
 }
 
 
-function TaskModal({isOpen, onClose}: TaskModalProps) {
+function TaskModal({isOpen, onClose, onAddTask}: TaskModalProps) {
 
   const [title, setTitle] = useState('');
   const [label, setLabel] = useState<'work' | 'personal' | 'priority'>('work');
@@ -28,11 +29,21 @@ function TaskModal({isOpen, onClose}: TaskModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (title.trim() && dueDate) {
+        onAddTask(title, label, dueDate);
+        setTitle('');
+        setLabel('work');
+        setDueDate('');
+        onClose();
+    }
   }
 
   const handleClose = () => {
+    setTitle('');
+    setLabel('work');
+    setDueDate('');
     onClose();
-
   }
 
   return (
