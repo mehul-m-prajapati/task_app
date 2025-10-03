@@ -68,21 +68,21 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
 
         {/* Table Header */}
         <div className="grid grid-cols-12 gap-4 pb-4 border-b border-gray-200 mb-6">
-            <div className="col-span-1"></div>
+            <div className="col-span-1 border-r border-gray-600"></div>
 
-            <div className="col-span-4">
+            <div className="col-span-4 border-r border-gray-600">
                 <h3 className="text-lg font-medium text-gray-600">Title</h3>
             </div>
 
-            <div className="col-span-2">
+            <div className="col-span-2 border-r border-gray-600">
                 <h3 className="text-lg font-medium text-gray-600">Label</h3>
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-3 border-r border-gray-600">
                 <h3 className="text-lg font-medium text-gray-600">Due Date</h3>
             </div>
 
-            <div className="col-span-2">
+            <div className="col-span-2 border-r border-gray-600">
                 <h3 className="text-lg font-medium text-gray-600">Actions</h3>
             </div>
         </div>
@@ -94,7 +94,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                  border-b border-gray-100 last:border-b-0">
 
                     {/* Checkbox */}
-                    <div className="col-span-1">
+                    <div className="col-span-1 border-r border-gray-600">
                         <Checkbox
                             checked={task.completed}
                             onCheckedChange={() => onToggleTask(task.id)}
@@ -104,7 +104,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Title */}
-                    <div className="col-span-4">
+                    <div className="col-span-4 border-r border-gray-600">
                         {editTaskId == task.id ? (
                             <Input
                                 type="text"
@@ -124,7 +124,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Label */}
-                    <div className="col-span-2">
+                    <div className="col-span-2 border-r border-gray-600">
                         {editTaskId == task.id ? (
                             <select
                                 value={editForm.label}
@@ -150,7 +150,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Due Date */}
-                    <div className="col-span-3">
+                    <div className="col-span-3 border-r border-gray-600">
                         {editTaskId === task.id ? (
                             <Input
                                 type="date"
@@ -165,7 +165,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Actions */}
-                    <div className="col-span-2 flex items-center gap-2">
+                    <div className="col-span-2 flex items-center gap-2 border-r border-gray-600">
 
                         {editTaskId === task.id ? (
                             <>
