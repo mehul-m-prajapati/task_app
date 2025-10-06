@@ -57,16 +57,16 @@ function TaskApp() {
         </div>
 
         {/* Main Content Card */}
-        <div className="bg-white rounded-3xl p-8 max-w-6xl mx-auto">
+        <div className=" rounded-3xl p-8 max-w-6xl mx-auto">
 
              {/* Content Header */}
              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-semibold text-gray-900">Your Tasks</h2>
+                <h2 className="text-2xl font-semibold">Your Tasks</h2>
 
                 <Button
                     onClick={() => setIsCreateModalOpen(true)}
-                    className="bg-black hover:bg-gray-700
-                    text-white px-6 py-3 cursor-pointer rounded-xl font-medium flex items-center gap-2">
+                    className="hover:bg-gray-400 px-6 py-3 cursor-pointer
+                    rounded-xl font-medium flex items-center gap-2">
                     <Plus className="w-5 h-5" />
                     Create Task
                 </Button>

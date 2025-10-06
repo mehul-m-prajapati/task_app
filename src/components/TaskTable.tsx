@@ -6,13 +6,6 @@ import { PencilLine as Edit, Trash2, Save, CircleX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from "react";
 import { Input } from "./ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 
 interface TaskProps {
@@ -27,6 +20,8 @@ interface TaskTableProps {
   onDeleteTask: (id: string) => void;
   onUpdateTask: (id: string, title: string, label: 'work' | 'personal' | 'priority', dueDate: string) => void;
 }
+
+// ---------------------------------------------------------
 
 function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableProps) {
 
@@ -64,26 +59,26 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
   };
 
   return (
-    <div className="bg-gray-50 rounded-2xl p-6">
+    <div className="rounded-2xl p-6 border border-gray-300">
 
         {/* Table Header */}
         <div className="grid grid-cols-12 gap-4 pb-4 border-b border-gray-200 mb-6">
-            <div className="col-span-1 border-r border-gray-600"></div>
+            <div className="col-span-1 border-r border-gray-300"></div>
 
-            <div className="col-span-4 border-r border-gray-600">
-                <h3 className="text-lg font-medium text-gray-600">Title</h3>
+            <div className="col-span-4 border-r border-gray-300">
+                <h3 className="text-lg font-medium text-gray-100">Title</h3>
             </div>
 
-            <div className="col-span-2 border-r border-gray-600">
-                <h3 className="text-lg font-medium text-gray-600">Label</h3>
+            <div className="col-span-2 border-r border-gray-300">
+                <h3 className="text-lg font-medium text-gray-100">Label</h3>
             </div>
 
-            <div className="col-span-3 border-r border-gray-600">
-                <h3 className="text-lg font-medium text-gray-600">Due Date</h3>
+            <div className="col-span-3 border-r border-gray-300">
+                <h3 className="text-lg font-medium text-gray-100">Due Date</h3>
             </div>
 
-            <div className="col-span-2 border-r border-gray-600">
-                <h3 className="text-lg font-medium text-gray-600">Actions</h3>
+            <div className="col-span-2 border-r border-gray-300">
+                <h3 className="text-lg font-medium text-gray-100">Actions</h3>
             </div>
         </div>
 
@@ -91,10 +86,10 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
         <div className="space-y-4">
             {tasks.map(task => (
                 <div key={task.id} className="grid grid-cols-12 gap-4 items-center py-4
-                 border-b border-gray-100 last:border-b-0">
+                 border-b border-gray-300 last:border-b-0">
 
                     {/* Checkbox */}
-                    <div className="col-span-1 border-r border-gray-600">
+                    <div className="col-span-1 border-r border-gray-300">
                         <Checkbox
                             checked={task.completed}
                             onCheckedChange={() => onToggleTask(task.id)}
@@ -104,19 +99,19 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Title */}
-                    <div className="col-span-4 border-r border-gray-600">
+                    <div className="col-span-4 border-r border-gray-300">
                         {editTaskId == task.id ? (
                             <Input
                                 type="text"
                                 value={editForm.title}
                                 onChange={e => setEditForm({...editForm, title: e.target.value})}
-                                className="font-medium border rounded px-2 py-1 w-full text-gray-900"
+                                className="font-medium border rounded px-2 py-1 w-full text-gray-100"
                                 autoFocus
                              />
                         ) : (
                             <span className={cn(
                                 "text-md font-medium",
-                                task.completed ? "line-through text-gray-500" : "text-gray-900"
+                                task.completed ? "line-through text-gray-300" : "text-gray-100"
                             )}>
                                 {task.title}
                             </span>
@@ -124,7 +119,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Label */}
-                    <div className="col-span-2 border-r border-gray-600">
+                    <div className="col-span-2 border-r border-gray-300">
                         {editTaskId == task.id ? (
                             <select
                                 value={editForm.label}
@@ -150,22 +145,22 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                     </div>
 
                     {/* Due Date */}
-                    <div className="col-span-3 border-r border-gray-600">
+                    <div className="col-span-3 border-r border-gray-300">
                         {editTaskId === task.id ? (
                             <Input
                                 type="date"
                                 value={editForm.dueDate}
                                 onChange={(e) => setEditForm({...editForm, dueDate: e.target.value})}
-                                className="border rounded px-2 py-1 w-full text-lg text-gray-700"
+                                className="border rounded px-2 py-1 w-full text-lg text-gray-100"
                             />
                         ) : (
-                            <span className="text-lg text-gray-700">{task.dueDate}</span>
+                            <span className="text-lg text-gray-100">{task.dueDate}</span>
                           )
                         }
                     </div>
 
                     {/* Actions */}
-                    <div className="col-span-2 flex items-center gap-2 border-r border-gray-600">
+                    <div className="col-span-2 flex items-center gap-2 border-r border-gray-300">
 
                         {editTaskId === task.id ? (
                             <>
@@ -183,7 +178,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                                   }
                                 }}
                               >
-                                <Save className="w-4 h-4 text-gray-600" />
+                                <Save className="w-4 h-4 text-gray-100" />
                               </Button>
 
                               <Button
@@ -192,7 +187,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                                 className="w-8 h-8 p-0 hover:bg-gray-200"
                                 onClick={() => setEditTaskId(null)}
                               >
-                                <CircleX className="w-4 h-4 text-gray-600" />
+                                <CircleX className="w-4 h-4 text-gray-100" />
                               </Button>
                             </>
                         ) : (
@@ -203,7 +198,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                                 onClick={() => editTask(task)}
                                 className="w-8 h-8 p-0 hover:bg-gray-200"
                             >
-                                <Edit className="w-4 h-4 text-gray-600" />
+                                <Edit className="w-4 h-4 text-gray-100" />
                             </Button>
 
                             <Button
@@ -212,7 +207,7 @@ function TaskTable({tasks, onToggleTask, onDeleteTask, onUpdateTask}: TaskTableP
                                 onClick={() => onDeleteTask(task.id)}
                                 className="w-8 h-8 p-0 hover:bg-gray-200"
                             >
-                                <Trash2 className="w-4 h-4 text-gray-600" />
+                                <Trash2 className="w-4 h-4 text-gray-100" />
                             </Button>
                           </>
                           )

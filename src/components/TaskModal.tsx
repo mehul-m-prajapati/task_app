@@ -90,6 +90,7 @@ function TaskModal({isOpen, onClose, onAddTask}: TaskModalProps) {
                         id="dueDate"
                         type="date"
                         className='w-[180px]'
+                        // To make calendar icon white in dark theme
                         style={{
                             colorScheme: 'dark',
                         }}
